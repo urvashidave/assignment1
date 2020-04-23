@@ -1,3 +1,6 @@
+//Main file which handle all component
+//call all the child component here
+
 import React, { useState } from "react";
 import CounterBox from "../Counter/Counter";
 import AddData from "../AddData/AddData";

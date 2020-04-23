@@ -1,11 +1,18 @@
+//Handling Dessert value in this file
+
+
 import React, { useState } from "react";
 import "./Adddata.css";
 
-const AddData = (props) => {
+
+//set props
+  const AddData = (props) => {
   const [name, setName] = useState("");
   const [showError, setShowError] = useState(false);
   const title = props.value ? props.value : "Add New Data";
 
+
+  //Handle submit button
   const handleSubmit = () => {
     if (!name) {
       setShowError(true);
@@ -15,7 +22,7 @@ const AddData = (props) => {
     }
     setName("");
   };
-
+  //Do validation
   const getError = () => {
     if (!name && showError) {
       return <div className="ErrorMessage">Please enter name</div>;

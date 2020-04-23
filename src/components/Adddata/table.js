@@ -1,13 +1,14 @@
+//Handling calories , Dessert Table here 
+
 import React from 'react'; 
 import './table.css';
 import PropTypes from 'prop-types';
 
 const table = (props) => {
     const {name}= props;
-   
+//pass name value in table name has count and name in it
 return(
 <div className="Counter_box3">
-
 <table class="table">
     <thead class="table-head">
         <tr>
@@ -24,7 +25,7 @@ return(
 
 
 </div>
-
+//optional
 )}             
 table.defaultProps = {
     data: [],
