@@ -1,29 +1,30 @@
-import React,{useState} from 'react'; 
-import './table.css';
+import React from "react";
+import "./table.css";
+
 const table = (props) => {
-    const { name } = props;
-
-console.log(name);
-return(
-<div className="Counter_box3">
-
-<table className="table">
-          <thead className="table-head">
+  const { data } = props;
+  return (
+    <div className="Counter_box3">
+      <table className="table">
+        <thead className="table-head">
+          <tr>
+            <th>Dessert(100g serving)</th>
+            <th>Calories</th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((item) => {
+            return (
               <tr>
-                <th>Dessert(100g serving)</th>
-                <th>Calories</th>
-              </tr>           
-             
-              </thead>
-              <tbody>
-              
-            </tbody>
-             
-        </table>
-
-
-</div>
-
-)}             
+                <th>{item.name}</th>
+                <th>{item.value}</th>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+  );
+};
 
 export default table;

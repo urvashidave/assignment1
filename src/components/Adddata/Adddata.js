@@ -1,65 +1,62 @@
-import React,{useState} from 'react'; 
-import './Adddata.css';
-import table from './table';
-const Adddata = (props) => {
+import React, { useState } from "react";
+import "./Adddata.css";
 
-    //states and props
-    const[name,setName] = useState('');
-    const[nameError,setNameError] = useState(null);
+const AddData = (props) => {
+  const [name, setName] = useState("");
+  const [showError, setShowError] = useState(false);
+  const title = props.value ? props.value : "Add New Data";
 
-
-    //function to handle submit button
-    const handleSubmit =()=> {
-        alert("dessert is " +name);
-        //handle validation for empty name field
-        if(name===''){
-            // Create an error set method to in
-            setNameError('Invaild input');
-        }
-        else{
-            setNameError(null);
-
-        }
+  const handleSubmit = () => {
+    if (!name) {
+      setShowError(true);
+    } else {
+      props.onChange(name);
+      setShowError(false);
     }
+    setName("");
+  };
 
-    
-return(
-       //set value on change of input button by calling setName
-       //call handle submit function when click on primary button to pass name value
+  const getError = () => {
+    if (!name && showError) {
+      return <div className="ErrorMessage">Please enter name</div>;
+    }
+  };
+
+  return (
+    //set value on change of input button by calling setName
+    //call handle submit function when click on primary button to pass name value
 
     <div className="Counter_box2">
-    <div className="ContactForm">
-         <h3>Add Data</h3>
-            <table>
-                <tbody>
-                <tr>
-                    <td>
-                        
-                        <input 
-                            type="text"
-                            id="name" 
-                            placeholder="Dessert Name"
-                            className="form-control"
-                            value={name}
-                            onChange={(event) => {
-                            setName(event.target.value);
-                            }}/>
-                             <div className="ErrorMessage">{nameError}</div> 
-                    </td>
-                    <td>
-                        <button 
-                            type="button" 
-                            className="btn btn-primary"
-                            onClick={handleSubmit}>
-                        PRIMARY
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
+      <div className="ContactForm">
+        <h3>{title}</h3>
+        <table>
+          <tbody>
+            <tr>
+              <td>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="Dessert Name"
+                  className="form-control"
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                />
+                {getError()}
+              </td>
+              <td>
+                <button
+                  type="button"
+                  className="btn btn-primary"
+                  onClick={handleSubmit}
+                >
+                  PRIMARY
+                </button>
+              </td>
+            </tr>
+          </tbody>
         </table>
-        </div>
+      </div>
     </div>
-          
- )
-}
-export default Adddata;
+  );
+};
+export default AddData;
