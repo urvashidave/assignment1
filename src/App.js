@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import NavBar from './components/NavBar/Navbar';
+import CounterBox from './components/Counter/Counter';
+import Adddata from './components/Adddata/Adddata';
+import Table from './components/Table/table';
 
-function App() {
+class App extends Component {
+
+  name={
+    name:'title'
+  }
+
+  changethwworld =(namev) =>{
+    this.setName({name:namev});
+  }
+
+  render(){
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      <div className="App-header">
+        <NavBar/>
+          <table>
+            <tbody>
+              <tr>
+                <td>
+                  <CounterBox/>
+                </td>
+                <td>
+                  <Table dowhatever={this.changethwworld.bind(this,'urvashi')} title={this.name.title}/>
+                  
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  <Adddata/>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+</div>
+);
 }
-
+}
 export default App;
